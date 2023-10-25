@@ -1,16 +1,15 @@
 function fetchBooks() {
   // To pass the tests, don't forget to return your fetch!
-  fetch('https://anapioficeandfire.com/api/books')
-    .then(response => {
-      return response.json();
-    })
-    .then(books => {
-      renderBooks(books);
-    })
-    .catch(error => {
-      console.error(error);
-    })
- 
+return fetch('https://anapioficeandfire.com/api/books')
+  .then(response => {
+    return response.json();
+  })
+  .then(books => {
+    renderBooks(books);
+  })
+  .catch(error => {
+    console.error(error);
+  });
 }
 
 function renderBooks(books) {
@@ -22,6 +21,24 @@ function renderBooks(books) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  fetchBooks();
+document.addEventListener('DOMContentLoaded', () => {
+  
+  fetch('https://anapioficeandfire.com/api/books', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: 'The Lord of the Rings'
+
+    })
+   
+  })
+    
+    .then(response => {
+      return response.json();
+    })
+    .then(books => {
+      renderBooks(books);
+    })
 });
